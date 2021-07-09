@@ -5,32 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="app.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,800&display=swap"
+      rel="stylesheet"
+    />
     <title>Freeman</title>
   </head>
   <body>
     <header>
       <h1 id="logo">Freeman</h1>
     </header>
+
     <main class="container">
-      <section>
-        <h2 id="balance">Balanço</h2>
+      <section id="balance">
+        <h2 class="sr-only">Balanço</h2>
+
         <div class="card">
-          <h2>Entradas</h2>
-          <p>R$ 5.000,00</p>
+          <h3>
+            <span>Entradas</span>
+            <img src="assets/income.svg" alt="Imgem de entradas" />
+          </h3>
+          <p id="incomeDisplay">R$ 5.000,00</p>
         </div>
+
         <div class="card">
-          <h3>Saídas</h3>
-          <p>R$ 2.000,00</p>
+          <h3>
+            <span> Saídas </span>
+            <img src="assets/expense.svg" alt="Imagem de saídas" />
+          </h3>
+          <p id="expenseDisplay">R$ 2.000,00</p>
         </div>
+
         <div class="card total">
-          <h3>Total</h3>
-          <p>R$ 3.000,00</p>
+          <h3>
+            <span> Total </span>
+            <img src="assets/total.svg" alt="Imagem de total" />
+          </h3>
+          <p id="totalDisplay">R$ 3.000,00</p>
         </div>
       </section>
+
       <section id="transactions">
         <h2>Transações</h2>
+
+        <a href="#" onclick="Modal.open()" class="button new"
+          >+Adicionar Transação</a
+        >
         <table id="data-table">
           <thead>
             <tr>
@@ -39,26 +60,57 @@
               <th>Data</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="description">Luz</td>
-              <td class="expense">-R$ 500,00</td>
-              <td class="date">21/01/2021</td>
-            </tr>
-            <tr>
-              <td class="description">Criação de Website</td>
-              <td class="income">R$ 5.000,00</td>
-              <td class="date">10/01/2021</td>
-            </tr>
-            <tr>
-              <td class="description">Internet</td>
-              <td class="expense">-R$ 100,00</td>
-              <td class="date">17/01/2021</td>
-            </tr>
-          </tbody>
+
+          <tbody></tbody>
         </table>
       </section>
     </main>
+
+    <div class="modal-overlay active">
+      <div class="modal">
+        <div class="form">
+          <h2>Nova Transação</h2>
+          <form action="">
+            <div class="input-group">
+              <label class="sr-only" for="description">Descrição</label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="description"
+              />
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="amount">Valort</label>
+              <input
+                type="number"
+                step="0.01"
+                id="amount"
+                name="amount"
+                placeholder="0,00"
+              />
+              <small class="help"
+                >Use o sinal - (Negativo) para despesas e , (virgula) para casas
+                decimais</small
+              >
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="date">Descrição</label>
+              <input type="date" id="date" name="date" placeholder="Data" />
+            </div>
+
+            <div class="input-group actions">
+              <a onclick="Modal.close()" href="#" class="button cancel"
+                >Cancelar</a
+              >
+              <button>Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <p>Freeman</p>
