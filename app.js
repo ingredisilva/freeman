@@ -15,7 +15,7 @@ const Storage = {
     return JSON.parse(localStorage.getItem("freeman:transactions")) || [];
   },
 
-  set() {
+  set(transactions) {
     localStorage.setItem("freeman:transactions", JSON.stringify(transactions));
   },
 };
@@ -37,7 +37,7 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    Transactions.all.forEach((transaction) => {
+    Transaction.all.forEach((transaction) => {
       if (transaction.amount > 0) {
         income += transaction.amount;
       }
@@ -67,8 +67,8 @@ const DOM = {
 
   addTransaction(transaction, index) {
     const tr = document.createElement("tr");
-    tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
-    tr.dataset.index = index;
+    (tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)),
+      (tr.dataset.index = index);
 
     DOM.transactionsContainer.appendChild(tr);
   },
@@ -80,17 +80,16 @@ const DOM = {
 
     const html = `
     <td class="description">${transaction.description}</td>
-    <td class="${CSSclass}">${amount}"</td>
-    <td class="date">${transaction.date}"</td>
+    <td class="${CSSclass}">${amount}</td>
+    <td class="date">${transaction.date}</td>
     <td>
     <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação" />
     </td>
    `;
-
     return html;
   },
 
-  upadateBalance() {
+  updateBalance() {
     document.getElementById("incomeDisplay").innerHTML = Utils.formatCurrency(
       Transaction.incomes()
     );
