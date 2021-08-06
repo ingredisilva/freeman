@@ -41,9 +41,9 @@ body {
 
 /* Titles ===================== */
 h2 {
-  margin-top: 3.2rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.8rem;
-  color: var(--dark-blue);
+  color: var(--green);
 
   font-weight: bold;
 }
@@ -198,6 +198,8 @@ table tbody tr:hover {
 table tbody td {
   background: white;
   padding: 1rem 2rem;
+
+  text-align: left;
 }
 
 td.description {
